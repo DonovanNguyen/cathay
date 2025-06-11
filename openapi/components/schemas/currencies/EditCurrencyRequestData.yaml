@@ -1,0 +1,15 @@
+type: object
+required:
+  - code
+  - name
+  - version
+properties:
+  code:
+    type: string
+    example: USD
+  name:
+    type: string
+    example: US Dollar
+  version:
+    type: integer
+    example: 1

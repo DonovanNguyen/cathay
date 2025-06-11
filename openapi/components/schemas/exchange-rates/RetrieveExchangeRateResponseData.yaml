@@ -1,0 +1,33 @@
+type: object
+description: Response containing a list of exchange rates
+properties:
+  exchangeRates:
+    type: array
+    description: List of exchange rate entries
+    items:
+      type: object
+      description: Exchange rate data for a specific base/quote pair at a given time
+      properties:
+        base:
+          type: string
+          description: Base currency code
+          example: "USD"
+        quote:
+          type: string
+          description: Quote currency code
+          example: "JPY"
+        rate:
+          type: number
+          format: decimal
+          description: Exchange rate rounded to two decimal places
+          example: 109.55
+        dateTime:
+          type: string
+          format: date-time
+          description: Timestamp of the exchange rate in "yyyy/MM/dd HH:mm:ss" format
+          example: "2025/03/26 23:59:59"
+      required:
+        - base
+        - quote
+        - rate
+        - dateTime

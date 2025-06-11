@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info:
+  title: ExchangeFlow
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+tags:
+  - name: currencies
+    description: Operations related to currencies
+  - name: exchange-rates
+    description: Operations related to exchange rates
+paths:
+  /currencies:
+    $ref: './paths/currencies/currencies.yaml'
+  /currencies/{id}:
+    $ref: './paths/currencies/currencies[id].yaml'
+  /exchange-rates:
+    $ref: './paths/exchange-rates/exchange-rates.yaml'
+components:
+  schemas:
+    GetCurrencyListResponse:
+        $ref: './components/schemas/currencies/GetCurrencyListResponse.yaml'
+    GetCurrencyResponse:
+      $ref: './components/schemas/currencies/GetCurrencyResponse.yaml'
+    AddCurrencyRequestData:
+      $ref: './components/schemas/currencies/AddCurrencyRequestData.yaml'
+    EditCurrencyRequestData:
+      $ref: './components/schemas/currencies/EditCurrencyRequestData.yaml'
+    RetrieveExchangeRateRequestData:
+      $ref: './components/schemas/exchange-rates/RetrieveExchangeRateRequestData.yaml'
+    RetrieveExchangeRateResponseData:
+      $ref: './components/schemas/exchange-rates/RetrieveExchangeRateResponseData.yaml'

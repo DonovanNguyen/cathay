@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE # In-memory H2 database
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:sql/schema.sql
+      data-locations: classpath:sql/data.sql
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update # Automatically create/update database schema
+    show-sql: true # Log SQL queries to console
+    properties:
+      hibernate:
+        format_sql: true # Format SQL for readability
+  h2:
+    console:
+      enabled: true # Enable H2 console
+      path: /h2-console # url path for H2 console
+oanda:
+  exchange-rate-url: "https://fxds-public-exchange-rates-api.oanda.com/cc-api/currencies?base=%s&quote=%s&data_type=chart&start_date=%s&end_date=%s"
+batch:
+  cron:
+    retrieve-exchange-rates: "0 0 0 * * *"
+    # retrieve-exchange-rates: "*/30 * * * * *"

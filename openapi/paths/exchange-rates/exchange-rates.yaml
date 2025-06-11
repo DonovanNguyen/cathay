@@ -1,0 +1,58 @@
+get:
+  summary: Retrieve exchange rates for a currency pair within a date range
+  tags:
+    - exchange-rates
+  operationId: getExchangeRates
+  parameters:
+    - name: base
+      in: query
+      required: true
+      schema:
+        type: string
+        example: "USD"
+      description: Base currency code
+    - name: quote
+      in: query
+      required: true
+      schema:
+        type: string
+        example: "EUR"
+      description: Quote currency code
+    - name: startDate
+      in: query
+      required: true
+      schema:
+        type: string
+        format: date
+        example: "2025-03-26"
+      description: Start date for exchange rates (YYYY-MM-DD)
+    - name: endDate
+      in: query
+      required: true
+      schema:
+        type: string
+        format: date
+        example: "2025-03-27"
+      description: End date for exchange rates (YYYY-MM-DD)
+  responses:
+    '200':
+      description: Successfully retrieved exchange rate data
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/exchange-rates/RetrieveExchangeRateResponseData.yaml'
+    '400':
+      description: Bad request
+    '422':
+      description: Business validation error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: arrays
+                items:
+                  type: string
+                example:
+                  - exchange-rate.date.invalid-range

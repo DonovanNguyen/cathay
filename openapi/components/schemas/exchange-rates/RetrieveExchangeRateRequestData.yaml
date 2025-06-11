@@ -1,0 +1,25 @@
+type: object
+required:
+  - base
+  - quote
+  - startDate
+  - endDate
+properties:
+  base:
+    type: string
+    description: Base currency code
+    example: "USD"
+  quote:
+    type: string
+    description: Quote currency code
+    example: "EUR"
+  startDate:
+    type: string
+    format: date
+    description: Start date of the exchange rate period (YYYY-MM-DD)
+    example: "2025-03-26"
+  endDate:
+    type: string
+    format: date
+    description: End date of the exchange rate period (YYYY-MM-DD)
+    example: "2025-03-27"

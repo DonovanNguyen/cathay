@@ -1,0 +1,40 @@
+get:
+  summary: List all currencies
+  tags:
+    - currencies
+  responses:
+    '200':
+      description: List of currencies
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/currencies/GetCurrencyListResponse.yaml'
+post:
+  summary: Add a new currency
+  tags:
+    - currencies
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/currencies/AddCurrencyRequestData.yaml'
+  responses:
+    '200':
+      description: Currency added successfully
+    '400':
+      description: Bad request
+    '422':
+      description: Business validation error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                type: arrays
+                items:
+                  type: string
+                example:
+                  - currency.code.duplicated
+                  - currency.code.invalid
