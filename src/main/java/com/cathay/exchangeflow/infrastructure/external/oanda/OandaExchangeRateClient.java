@@ -45,6 +45,7 @@ public class OandaExchangeRateClient {
         try {
             ResponseEntity<JsonNode> response = restTemplate.getForEntity(url, JsonNode.class);
             JsonNode body = response.getBody();
+            logger.info("OANDA API response body: {}", body);
             if (response.getStatusCode().is2xxSuccessful() && body != null) {
                 JsonNode responseNode = body.path("response");
                 if (responseNode.isArray()) {
